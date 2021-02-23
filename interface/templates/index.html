@@ -1,0 +1,106 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>Display interface</title>
+
+    <!--Styles-->
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}" />
+
+    <!--CDN-->
+
+    <link
+      href="https://fonts.googleapis.com/css2?family=Material+Icons"
+      rel="stylesheet"
+    />
+
+    <script
+      src="https://code.jquery.com/jquery-3.5.1.js"
+      integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc="
+      crossorigin="anonymous"
+    ></script>
+
+    <!-- Compiled and minified CSS -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.css"
+    />
+
+    <!-- Compiled and minified JavaScript -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.js"></script>
+  </head>
+
+  <body>
+    <div class="app">
+      <div class="preview">
+        <div class="previewTag">
+          <span class="material-icons"> remove_red_eye </span>
+          <h5>⬇ Preview ⬇</h5>
+        </div>
+        <div class="display">
+          <p id="previewText">Some&nbsp;&nbsp;random text</p>
+        </div>
+      </div>
+
+      <div class="message">
+        <h3>LCD Setup 📟</h3>
+        <div class="input-field col s6">
+          <i class="material-icons prefix">format_size</i>
+          <input
+            id="icon_prefix"
+            type="text"
+            class="validate counter"
+            data-length="60"
+            oninput="updateInterval()"
+          />
+          <label for="icon_prefix">Text to show</label>
+        </div>
+      </div>
+
+      <div class="time">
+        <!-- Slider with Starting Value -->
+        <div class="input-field col s12" style="text-align: center">
+          <select
+            id="speedSelect"
+            style="text-align: center"
+            onchange="updateInterval()"
+          >
+            <option value="400" disabled selected>Speed</option>
+            <option value="400">Slow 🐢</option>
+            <option value="200">Fast 🐇</option>
+            <option value="100">Lightning speed⚡</option>
+          </select>
+          <label>Select scrolling speed</label>
+        </div>
+      </div>
+
+      <div class="buttons">
+        <div>
+          <a
+          id="upload"
+            class="waves-effect waves-light btn-large btn-floating pulse cyan"
+            onclick="sendData(1)"
+            ><i class="material-icons right">file_upload</i></a
+          >
+          <h6>Upload</h6>
+        </div>
+
+        <div>
+          <a
+          id="reset"
+            class="waves-effect waves-light btn-large btn-floating red"
+            onclick="sendData(0)"
+            ><i class="material-icons right">replay</i></a
+          >
+          <h6>Reset</h6>
+        </div>
+      </div>
+    </div>
+
+    <script src="{% static 'js/app.js' %}"></script>
+  </body>
+</html>
