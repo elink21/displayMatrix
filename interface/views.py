@@ -12,7 +12,14 @@ def index(request):
 
 
 def sendData(request):
-    arduino = serial.Serial('COM5', 57600)
+    try:
+        arduino = serial.Serial('COM5', 57600)
+    except:
+        data = {
+            'status': 'Error',
+            'code': 401
+        }
+        return HttpResponse(json.dumps(data), content_type='application/json')
     separator = '|'
     speed: int = int(request.GET.get('speed'))
     # this because the speed needs to be mapped due to screen differences with page selects

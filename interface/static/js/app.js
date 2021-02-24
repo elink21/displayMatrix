@@ -92,7 +92,13 @@ function sendData(reset) {
                 console.table(data);
                 buttonA.classList.remove("disabled");
                 buttonB.classList.remove("disabled");
-                M.toast({ html: 'Mensaje configurado ✅' })
+                if (data['status'] == "OK") {
+                    M.toast({ html: 'Mensaje configurado ✅' })
+                }
+                else{
+                    M.toast({ html: 'Revisar conexion 🚨'});
+                }
+
             }
         });
 }
